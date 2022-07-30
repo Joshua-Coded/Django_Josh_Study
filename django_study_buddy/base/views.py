@@ -26,6 +26,8 @@ def room(request, pk):
 
 def createRoom(request):
     form = RoomForm()
+    if request.method == "POST":
+        print(request.POST)
     context = {'form': form}
     return render(request, 'base/room_form.html', context)
 
