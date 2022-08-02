@@ -6,7 +6,7 @@ Cloning the repository
 git clone https://github.com/Joshbam-joshwilly/Django_Josh_Study.git
 --> Move into the directory where we have the project files :
 
-cd StudyBud
+cd Django_josh_study
 --> Create a virtual environment :
 
 # Let's install virtualenv first
