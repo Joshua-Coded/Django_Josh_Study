@@ -3,7 +3,7 @@ StudyBuddy
 Cloning the repository
 --> Clone the repository using the command below :
 
-git clone https://github.com/divanov11/StudyBud.git
+git clone https://github.com/Joshbam-joshwilly/Django_Josh_Study.git
 --> Move into the directory where we have the project files :
 
 cd StudyBud
