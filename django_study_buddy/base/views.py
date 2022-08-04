@@ -1,7 +1,10 @@
-from multiprocessing import context
+from re import U
 from unicodedata import name
 from django.db.models import Q
+from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
+from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
 from .models import Room, Topic
 from .forms import RoomForm
 
@@ -14,6 +17,25 @@ from .forms import RoomForm
 # ]
 
 def loginPage(request):
+
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        try:
+            user = User.objects.get(username=username)
+        except:
+            messages.error(request, 'User does not exit')
+
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            return redirect('home')
+        else:
+            messages.error(request, 'Username Or password does not exit')
+
+
     context = {}
     return render(request, 'base/login_register.html', context)
 
