@@ -1,3 +1,4 @@
+from multiprocessing import context
 from unicodedata import name
 from django.db.models import Q
 from django.shortcuts import render, redirect
@@ -11,6 +12,12 @@ from .forms import RoomForm
 #     {'id':2, 'name':'Lets learn C programming!'},
 #     {'id':3, 'name':'Lets  learn Vue.js!'},
 # ]
+
+def loginPage(request):
+    context = {}
+    return render(request, 'base/login_register.html', context)
+
+
 
 
 def home(request):
