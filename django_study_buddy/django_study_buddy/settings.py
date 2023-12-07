@@ -25,7 +25,9 @@ SECRET_KEY = 'django-insecure-h-^&i!*6fq_-_m1=ttag1z^x&+7x8aqn8f!e3lsp^l+4%!(s9q
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+'django_study_buddy.on.dockerize.io'
+        ]
 
 
 # Application definition
