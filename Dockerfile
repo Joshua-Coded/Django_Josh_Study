@@ -1,14 +1,19 @@
-FROM ubuntu
+# Dockerfile
 
-WORKDIR /app
+# The first instruction is what image we want to base our container on
+# We Use an official Python runtime as a parent image
+FROM python:3.7
 
-COPY requirement.txt /app
-COPY django_study_buddy /app
+# Allows docker to cache installed dependencies between builds
+COPY requirements.txt requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
-RUN apt-get update && \
-    apt-get install -y python3 python3-pip && \
-    pip install -r requirements.txt && \
-    cd django_study_buddy 
+# Mounts the application code to the image
+COPY . code
+WORKDIR /code
 
-ENTRYPOINT ["python3"]
-CMD ["manage.py", "runserver", "0.0.0.0:8080"]
+EXPOSE 8000
+
+# runs the production server
+ENTRYPOINT ["python", "django_study_buddy/manage.py"]
+CMD ["runserver", "0.0.0.0:8000"]
